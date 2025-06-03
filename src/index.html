@@ -7,23 +7,29 @@
     <script src="https://kit.fontawesome.com/71bcccf63f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Library System</title>
+    <style>
+       
+    
+
+    </style>
 </head>
 <body>
     <nav>
         <div class="left">
-            <img src="../images/book-removebg-preview.png" alt="">
+            <img src="../images/book-removebg-preview.png" alt="Library logo">
         </div>
         <div class="right">
             <ul class="tabs">
-                <li>Members</li>
-                <li>Books</li>
-                <li>Trasactions</li>
+                <li class="tab-button-active" onclick="showTab('members')">Members</li>
+                <li class="tab-button" onclick="showTab('books')">Books</li>
+                <li class="tab-button" onclick="showTab('transactions')">Transactions</li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <div id="members">
+
+        <div id="members" class="tab-content">
             <div class="members-sidebar">
                 <h2>Members</h2>
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -31,7 +37,7 @@
 
                 <hr>
 
-                <ul>
+                <ul class="members-list">
                     <li>
                         <i class="fa-solid fa-user"></i>
                         <p>John Doe</p>
@@ -55,10 +61,10 @@
                 <div class="add">
                     
 
-                    <form action="">
-                        <input type="text" name="" placeholder="Name..." id="">
-                        <input type="email" name="" placeholder="Email..." id="">
-                        <input type="tel" name="" placeholder="Phone..." id="">
+                    <form action="" id="add-member-form">
+                        <input type="text" name="name" placeholder="Name..." id="name" required>
+                        <input type="email" name="email" placeholder="Email..." id="email" required>
+                        <input type="tel" name="phone" placeholder="Phone..." id="phone" required>
                         <button type="submit">Add Member</button>
                     </form>
                 </div>
@@ -67,7 +73,127 @@
 
         </div>
 
+        <div id="books" class="tab-content">
+            <div class="members-sidebar">
+                <h2>Books</h2>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" name="" id="">
+
+                <hr>
+
+                <ul class="books-list">
+                    <li>
+                        <i class="fa-solid fa-user"></i>
+                        <p>Title</p>
+                        <p>Author</p>
+                        <p>Year</p>
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-user"></i>
+                        <p>Title</p>
+                        <p>Author</p>
+                        <p>Year</p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="members-form">
+                <h2>Add A Book</h2>
+
+                <div class="add">
+
+                    <form action="" id="add-book-form">
+                        <input type="text" name="title" placeholder="Title...." id="title" required>
+                        <input type="text" name="author" placeholder="Author..." id="author" required>
+                        <input type="date" name="year" placeholder="Year..." id="year" required>
+                        <button type="submit">Add Book</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="transactions" class="tab-content">
+            <h2>Transaction Management</h2>
+
+            <form action="" id="borrow-form">
+                <select id="borrow-member" name="">
+                    <option value="">Select Member</option>
+                </select>
+                <select id="borrow-book" name=""> 
+                    <option value="">Select Book</option>
+                </select>
+                <input type="date" id="return-date" name="return-date" required min="2025-06-03" max="2025-12-31">
+                <button id="borrow-button" type="submit">Borrow</button>
+            </form>
+            
+
+            <table id="Transaction-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Book</th>
+                        <th>Member</th>
+                        <th>Borrow Date</th>
+                        <th>Return Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+            </table>
+
+        </div>
+
     </main>
     
+            
+    <script>
+        function showTab(tabName) {
+            
+            const allTabs = document.querySelectorAll('.tab-content, .tab-content-active');
+            const allButtons = document.querySelectorAll('.tab-button, .tab-button-active');
+            
+            
+            allTabs.forEach(tab => {
+                tab.classList.remove('tab-content-active');
+                tab.classList.add('tab-content');
+            });
+            
+            allButtons.forEach(button => {
+                button.classList.remove('tab-button-active');
+                button.classList.add('tab-button');
+            });
+            
+            
+            const selectedTab = document.getElementById(tabName);
+            const selectedButton = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+            
+            
+            allTabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+                selectedTab.classList.remove('tab-content');
+                selectedTab.classList.add('tab-content-active');
+            }
+            
+            if (selectedButton) {
+                selectedButton.classList.remove('tab-button');
+                selectedButton.classList.add('tab-button-active');
+            }
+        }
+    
+        
+        window.addEventListener('load', () => {
+            showTab('members');
+        });
+    </script>
+    <script src="../dist/index.js"></script>
 </body>
 </html>

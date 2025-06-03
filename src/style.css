@@ -44,21 +44,27 @@ nav .right ul li:hover {
 }
 main {
     margin: 20px auto;
-    max-width: 1200px;
     padding: 20px;
-    
+   
 }
-#members {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    background-color: #dadada;
+main #members, 
+main #books {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
 
-}
-.members-sidebar {
+
+.members-sidebar,
+.books-sidebar {
+    flex: 1;
     background-color: #ffffff;
-    width: 40vw;
-    margin: 20px;
+    max-width: 45%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,8 +72,37 @@ main {
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.5);
-    
 }
+
+
+.members-form,
+.books-form {
+    flex: 1;
+    background-color: #ffffff;
+    max-width: 45%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.5);
+}
+
+
+.tab-content {
+    display: none;
+}
+
+
+.tab-content-active {
+    display: flex !important;
+    flex-direction: row;
+    width: 100%;
+}
+
+
 .members-sidebar input {
     width: 40%;
     height: 40px;
@@ -119,13 +154,14 @@ main {
     color: #ffffff;
 }
 .members-form {
+    flex: 1;
     background-color: #ffffff;
-    width: 40vw;
-    margin: 20px;
+    max-width: 45%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.5);
@@ -177,4 +213,107 @@ main {
     border: 1px solid #012442;
     color: #012442;
     transition: all 0.5s ease-in-out;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #777777;
+}
+th {
+    background-color: #012442;
+    padding: 10px;
+    color: #ffffff;
+}
+tr:hover {
+    background-color: #f9f9f9;
+}
+#transactions  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+#transactions h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+#transactions form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+}
+#transactions form select {
+    width: 30%;
+    height: 35px;
+    border: 1px solid #012442;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.9rem;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+    outline: none;
+}
+#transactions form select:hover {
+    background-color: #012442;
+    color: #ffffff;
+    border: 1px solid #012442;
+    transition: all 0.5s ease-in-out
+}
+#transactions #borrow-button {
+    width: 20%;
+    height: 35px;
+    border: 1px solid #012442;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    background-color: #012442;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
+    outline: none;
+}
+
+#transactions #borrow-button:hover {
+    background-color: #ffffff;
+    border: 1px solid #012442;
+    color: #012442;
+    transition: all 0.5s ease-in-out;
+}
+.status-borrowed {
+    color: #ff6b6b;
+    
+    font-weight: bold;
+}
+
+.status-returned {
+    color: #51cf66;
+    font-weight: bold;
+}
+.return-button {
+    padding: 5px 10px;
+    background-color: #012442;
+    color: white;
+    border: 1px solid #012442;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.return-button:hover {
+    background-color: white;
+    color: #012442;
 }
