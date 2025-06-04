@@ -317,3 +317,17 @@ tr:hover {
     background-color: white;
     color: #012442;
 }
+.icons {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.icons .fa-pen {
+    font-size: 18px;
+    color: #51cf66;
+}
+.icons .fa-trash {
+    font-size: 18px;
+    color: #ff2828;
+}
